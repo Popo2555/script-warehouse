@@ -92,6 +92,10 @@ loki.process "filter_logs" {
   forward_to = [loki.write.centralloki.receiver]
 
   stage.drop {
+    expression = "^[^{].*"
+  }
+
+  stage.drop {
     expression = ".*Received release message:.*"
   }
 
