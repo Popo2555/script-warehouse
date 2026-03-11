@@ -94,6 +94,10 @@ loki.process "filter_logs" {
   stage.drop {
     expression = ".*Received release message:.*"
   }
+
+  stage.drop {
+    expression = ".*RTNETLINK answers: No such process.*"
+  }
 }
 
 loki.source.docker "default" {
